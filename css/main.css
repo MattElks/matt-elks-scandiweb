@@ -1,0 +1,37 @@
+/*
+colors:
+Telemagenta: #DA2F73
+Green: #06FF00
+Black: #000000
+*/
+
+body {
+  font-family: "Silkscreen", cursive;
+  display: flex;
+  justify-content: center;
+}
+.container {
+  width: 1140px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+/* FOOTER */
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1140px;
+  position: absolute;
+  bottom: 0;
+  height: 2.5rem;
+  border-top: 1px solid black;
+}
+footer h5 {
+  margin: 0;
+}
