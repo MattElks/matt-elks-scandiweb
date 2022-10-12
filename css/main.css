@@ -9,16 +9,51 @@ body {
   font-family: "Silkscreen", cursive;
   display: flex;
   justify-content: center;
+  color: #da2f73;
+  background-color: #000000;
 }
 .container {
   width: 1140px;
 }
 
+/* HEADER */
+
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid black;
+  border-bottom: 3px solid #da2f73;
+}
+/*Add click animation with shade */
+header button {
+  font-size: 1.3rem;
+  font-family: "Silkscreen", cursive;
+  border-color: #da2f73;
+  background-color: #000000;
+  color: #da2f73;
+  padding: 5px 10px;
+  border-width: 3px;
+}
+
+/*text changes color at same time*/
+header button:hover {
+  border-color: #06ff00;
+  background-color: #06ff00;
+  color: black;
+  cursor: pointer;
+}
+
+header button a {
+  text-decoration: none;
+}
+
+header button :active {
+  transform: translateY(1px);
+  box-shadow: 1px -1px 10px rgba(0, 0, 0, 0.1) inset;
+}
+
+header button a:visited {
+  color: inherit;
 }
 
 /* FOOTER */
@@ -30,8 +65,8 @@ footer {
   position: absolute;
   bottom: 0;
   height: 2.5rem;
-  border-top: 1px solid black;
+  border-top: 3px solid #da2f73;
 }
-footer h5 {
+footer p {
   margin: 0;
 }
