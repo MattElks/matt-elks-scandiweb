@@ -35,7 +35,6 @@ header button {
   border-width: 3px;
 }
 
-/*text changes color at same time*/
 header button:hover {
   border-color: #06ff00;
   background-color: #06ff00;
@@ -57,12 +56,29 @@ header button a:visited {
 }
 
 /*ADD-PRODUCT MAIN*/
-
 .form-container {
   display: flex;
   justify-content: center;
 }
 .form-wrap {
+  width: 200px;
+  padding-top: 50px;
+}
+
+label {
+  font-size: 1.4rem;
+}
+input {
+  font-family: "Silkscreen", cursive;
+  margin-top: 5px;
+}
+select {
+  font-family: "Silkscreen", cursive;
+  padding: 3px 0px;
+  margin-top: 5px;
+}
+option {
+  background-color: green;
 }
 
 /* FOOTER */
