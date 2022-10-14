@@ -71,8 +71,11 @@
                 id="items"
                 form="product_form"
                 required
+                onchange="addAttribute(this.value)"
               >
-                <option selected value>--please select product type--</option>
+                <option selected value="default">
+                  --please select product type--
+                </option>
                 <option value="DVD">DVD</option>
                 <option value="Furniture">Furniture</option>
                 <option value="Book">Book</option>
