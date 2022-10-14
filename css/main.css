@@ -13,7 +13,12 @@ body {
   background-color: #000000;
 }
 .container {
+  min-height: 100vh;
   width: 1140px;
+  position: relative;
+}
+.content-wrap {
+  padding-bottom: 2rem;
 }
 
 /* HEADER */
@@ -24,7 +29,9 @@ header {
   align-items: center;
   border-bottom: 3px solid #da2f73;
 }
-/*Add click animation with shade */
+header h1 {
+  margin: 10px 0;
+}
 header button {
   font-size: 1.3rem;
   font-family: "Silkscreen", cursive;
@@ -56,17 +63,18 @@ header button a:visited {
 }
 
 /*ADD-PRODUCT MAIN*/
+
 .form-container {
   display: flex;
   justify-content: center;
 }
 .form-wrap {
   width: 200px;
-  padding-top: 50px;
+  padding-top: 40px;
 }
 
 label {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 input {
   font-family: "Silkscreen", cursive;
@@ -85,6 +93,13 @@ select {
 select:focus {
   outline: 3px solid #da2f73;
 }
+/* OPTION CONTAINER */
+.option-container {
+  margin-top: 15px;
+}
+.option-container p {
+  margin-top: 5px;
+}
 
 /* FOOTER */
 footer {
@@ -94,7 +109,7 @@ footer {
   width: 1140px;
   position: absolute;
   bottom: 0;
-  height: 2.5rem;
+  height: 2rem;
   border-top: 3px solid #da2f73;
 }
 footer p {
