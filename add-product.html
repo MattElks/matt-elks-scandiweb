@@ -35,7 +35,9 @@
               formmethod=""
               id="sku"
               name="sku-input"
-              required
+              required="required"
+              oninvalid="this.setCustomValidity('Please, submit required data')"
+              onchange="this.setCustomValidity('')"
             />
             <label for="name" form="product_form" id="name">Name:</label>
             <input
@@ -44,17 +46,21 @@
               formmethod=""
               id="name"
               name="name-input"
-              required
+              required="required"
+              oninvalid="this.setCustomValidity('Please, submit required data')"
+              onchange="this.setCustomValidity('')"
             />
-            <label for="price" form="product_form" id="price">Price:</label>
+            <label for="price" form="product_form" id="price">Price($):</label>
             <input
               type="number"
               form="product_form"
               formmethod=""
               id="price"
               name="price-input"
-              required
-              min="0.1"
+              min="0.01"
+              required="required"
+              oninvalid="this.setCustomValidity('Please, submit required data')"
+              onchange="this.setCustomValidity('')"
             />
             <label for="items" form="product_form" id="productType"
               >Product Type:</label

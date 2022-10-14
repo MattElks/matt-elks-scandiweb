@@ -71,14 +71,19 @@ label {
 input {
   font-family: "Silkscreen", cursive;
   margin-top: 5px;
+  border: none;
+}
+input:focus {
+  outline: 3px solid #da2f73;
 }
 select {
   font-family: "Silkscreen", cursive;
   padding: 3px 0px;
   margin-top: 5px;
+  border: none;
 }
-option {
-  background-color: green;
+select:focus {
+  outline: 3px solid #da2f73;
 }
 
 /* FOOTER */
