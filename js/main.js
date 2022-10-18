@@ -53,7 +53,7 @@ const bookOption = `
 />
 <p>Please provide weight in KG</p>`;
 
-const addAttribute = (value) => {
+const addInput = (value) => {
   switch (value) {
     case "default":
       optionContainer.remove();
@@ -75,3 +75,5 @@ const addAttribute = (value) => {
       break;
   }
 };
+
+//Form validation
