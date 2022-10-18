@@ -29,34 +29,41 @@
         <main class="form-container">
           <div class="form-wrap">
             <form action="" method="" id="product_form">
-              <label for="sku" form="product_form">SKU:</label>
-              <input
-                type="text"
-                form="product_form"
-                formmethod=""
-                id="sku"
-                name="sku-input"
-              />
-              <small></small>
-              <label for="name" form="product_form">Name:</label>
-              <input
-                type="text"
-                form="product_form"
-                formmethod=""
-                id="name"
-                name="name-input"
-              />
-              <small></small>
-              <label for="price" form="product_form">Price($):</label>
-              <input
-                type="number"
-                form="product_form"
-                formmethod=""
-                id="price"
-                name="price-input"
-                min="0.01"
-              />
-              <small></small>
+              <div class="formWrapper">
+                <label for="sku" form="product_form">SKU:</label>
+                <input
+                  type="text"
+                  form="product_form"
+                  formmethod=""
+                  id="sku"
+                  name="sku-input"
+                />
+                <small></small>
+              </div>
+              <div class="formWrapper">
+                <label for="name" form="product_form">Name:</label>
+                <input
+                  type="text"
+                  form="product_form"
+                  formmethod=""
+                  id="name"
+                  name="name-input"
+                />
+                <small></small>
+              </div>
+              <div class="formWrapper">
+                <label for="price" form="product_form">Price($):</label>
+                <input
+                  type="number"
+                  form="product_form"
+                  formmethod=""
+                  id="price"
+                  name="price-input"
+                  min="0.01"
+                />
+                <small></small>
+              </div>
+              <div class="formWrapper">
               <label for="productType" form="product_form">Product Type:</label>
               <select
                 name="product-list"
@@ -65,6 +72,7 @@
                 onchange="addInputField(this.value)"
               >
                 <small></small>
+              </div>
                 <option selected value="default">
                   --please select product type--
                 </option>
