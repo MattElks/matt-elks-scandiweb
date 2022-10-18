@@ -63,15 +63,13 @@
                 oninvalid="this.setCustomValidity('Please, submit required data')"
                 onchange="this.setCustomValidity('')"
               />
-              <label for="items" form="product_form" id="productType"
-                >Product Type:</label
-              >
+              <label for="productType" form="product_form">Product Type:</label>
               <select
                 name="product-list"
-                id="items"
+                id="productType"
                 form="product_form"
                 required
-                onchange="addAttribute(this.value)"
+                onchange="addInput(this.value)"
               >
                 <option selected value="default">
                   --please select product type--
