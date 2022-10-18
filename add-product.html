@@ -37,6 +37,7 @@
                 id="sku"
                 name="sku-input"
               />
+              <small></small>
               <label for="name" form="product_form">Name:</label>
               <input
                 type="text"
@@ -45,6 +46,7 @@
                 id="name"
                 name="name-input"
               />
+              <small></small>
               <label for="price" form="product_form">Price($):</label>
               <input
                 type="number"
@@ -54,6 +56,7 @@
                 name="price-input"
                 min="0.01"
               />
+              <small></small>
               <label for="productType" form="product_form">Product Type:</label>
               <select
                 name="product-list"
@@ -61,6 +64,7 @@
                 form="product_form"
                 onchange="addInputField(this.value)"
               >
+                <small></small>
                 <option selected value="default">
                   --please select product type--
                 </option>
