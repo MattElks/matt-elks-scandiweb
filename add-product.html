@@ -22,7 +22,7 @@
         <header>
           <div><h1>Product Add</h1></div>
           <div>
-            <button form="product_form" id="submitBtn">Save</button>
+            <button form="product_form" type="submit">Save</button>
             <button><a href="/index.html">Cancel</a></button>
           </div>
         </header>
@@ -54,6 +54,7 @@
               <div class="formWrapper">
                 <label for="price" form="product_form">Price($):</label>
                 <input
+                  class="number"
                   type="number"
                   form="product_form"
                   formmethod=""
@@ -75,9 +76,9 @@
                 <option selected value="default">
                   --please select product type--
                 </option>
-                <option value="DVD">DVD</option>
-                <option value="Furniture">Furniture</option>
-                <option value="Book">Book</option>
+                <option value="DVD" class="number">DVD</option>
+                <option value="Furniture" class="number">Furniture</option>
+                <option value="Book" class="number">Book</option>
               </select>
             </form>
           </div>
