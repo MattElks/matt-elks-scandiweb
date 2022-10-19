@@ -101,6 +101,13 @@ select:focus {
   margin-top: 5px;
 }
 
+/* VALIDATION STYLING*/
+.error {
+  outline: 3px solid #da2f73;
+}
+.success {
+  outline: 3px solid #06ff00;
+}
 /* FOOTER */
 footer {
   display: flex;
