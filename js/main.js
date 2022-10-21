@@ -98,6 +98,7 @@ const addInputField = (value) => {
 };
 
 //Form validation
+
 const skuInput = document.querySelector("#sku");
 const nameInput = document.querySelector("#name");
 const priceInput = document.querySelector("#price");
@@ -191,7 +192,6 @@ const checkDigits = (arr) => {
 //validates selected option
 const checkOption = (option) => {
   let valid = false;
-  console.log(option.value);
   if (!isRequired(option.value)) {
     showError(option, "Please, submit required data");
   } else {
@@ -201,6 +201,42 @@ const checkOption = (option) => {
   return valid;
 };
 
+//validates number input for instant validation
+const checkNumber = (id) => {
+  //get element from id
+  const number = document.querySelector(`#${id}`);
+  if (!isRequired(number.value)) {
+    showError(number, "Please, submit required data");
+  } else if (!isMinAmount(number.value)) {
+    showError(number, `${id} must be at least 0.01`);
+  } else {
+    showSuccess(number);
+  }
+};
+
+//instant input validation
+form.addEventListener("input", (e) => {
+  switch (e.target.id) {
+    case "sku":
+      checkSku(skuInput);
+      break;
+    case "name":
+      checkName(nameInput);
+      break;
+    case "productType":
+      checkOption(optionInput);
+    case "price":
+    case "size":
+    case "height":
+    case "width":
+    case "length":
+    case "weight":
+      checkNumber(e.target.id);
+      break;
+  }
+});
+
+//validates form
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   //validate form
@@ -213,6 +249,7 @@ form.addEventListener("submit", (e) => {
 
   //submit to the server if the form is valid
   if (isFormValid) {
-    //add alert first!
+    //add alert first to check
+    //form.submit() ???
   }
 });
