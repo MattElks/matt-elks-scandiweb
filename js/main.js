@@ -102,10 +102,11 @@ const skuInput = document.querySelector("#sku");
 const nameInput = document.querySelector("#name");
 const priceInput = document.querySelector("#price");
 
-const selectOption = document.querySelector("#productType");
+const optionInput = document.querySelector("#productType");
 
 //checks if input is empty
-const isRequired = (value) => (value === "" ? false : true);
+const isRequired = (value) =>
+  value === "" || value === "default" ? false : true;
 
 //checks if sku is A-Z0-9 with length of 6
 const isSkuValid = (sku) => {
@@ -171,14 +172,11 @@ const checkName = (name) => {
 };
 
 //validates price, size, weight, height, length, width
-let numberInputs = document.getElementsByClassName("number");
+let numberInput = document.getElementsByClassName("number");
 const checkDigits = (arr) => {
   let valid = false;
   for (item of arr) {
-    //let valid = false;
-    console.log(arr);
     if (!isRequired(item.value)) {
-      console.log(item.value);
       showError(item, "Please, submit required data");
     } else if (!isMinAmount(item.value)) {
       showError(item, `${item.id} must be at least 0.01`);
@@ -191,21 +189,27 @@ const checkDigits = (arr) => {
 };
 
 //validates selected option
-/* 
-
-            INSERT HERE
-
-*/
+const checkOption = (option) => {
+  let valid = false;
+  console.log(option.value);
+  if (!isRequired(option.value)) {
+    showError(option, "Please, submit required data");
+  } else {
+    showSuccess(option);
+    valid = true;
+  }
+  return valid;
+};
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   //validate form
   let isSkuValid = checkSku(skuInput),
     isNameValid = checkName(nameInput),
-    isMinAmount = checkDigits(numberInputs);
-  //add validate option function here - come back to this
+    isMinAmount = checkDigits(numberInput),
+    isOptionValid = checkOption(optionInput);
 
-  let isFormValid = isSkuValid && isNameValid && isMinAmount;
+  let isFormValid = isSkuValid && isNameValid && isMinAmount && isOptionValid;
 
   //submit to the server if the form is valid
   if (isFormValid) {
