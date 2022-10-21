@@ -51,7 +51,7 @@
                 />
                 <small></small>
               </div>
-              
+
               <div class="formWrapper">
                 <label for="price" form="product_form">Price($):</label>
                 <input
@@ -65,22 +65,24 @@
                 <small></small>
               </div>
               <div class="formWrapper">
-              <label for="productType" form="product_form">Product Type:</label>
-              <select
-                name="product-list"
-                id="productType"
-                form="product_form"
-                onchange="addInputField(this.value)"
-              >
+                <label for="productType" form="product_form"
+                  >Product Type:</label
+                >
+                <select
+                  name="product-list"
+                  id="productType"
+                  form="product_form"
+                  onchange="addInputField(this.value)"
+                >
+                  <option selected value="default">
+                    --please select product type--
+                  </option>
+                  <option value="DVD">DVD</option>
+                  <option value="Furniture">Furniture</option>
+                  <option value="Book">Book</option>
+                </select>
                 <small></small>
               </div>
-                <option selected value="default">
-                  --please select product type--
-                </option>
-                <option value="DVD" >DVD</option>
-                <option value="Furniture">Furniture</option>
-                <option value="Book" >Book</option>
-              </select>
             </form>
           </div>
         </main>
