@@ -28,7 +28,7 @@
         </header>
         <main class="form-container">
           <div class="form-wrap">
-            <form action="" method="" id="product_form">
+            <form action="php/insert.php" method="post" id="product_form">
               <div class="formWrapper">
                 <label for="sku" form="product_form">SKU:</label>
                 <input
@@ -61,6 +61,7 @@
                   formmethod=""
                   id="price"
                   name="price-input"
+                  min="0.01"
                 />
                 <small></small>
               </div>
