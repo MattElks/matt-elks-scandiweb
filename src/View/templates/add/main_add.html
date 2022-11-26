@@ -1,0 +1,59 @@
+<main class="form-container">
+  <div class="form-wrap">
+    <form action="php/insert.php" method="post" id="product_form">
+      <div class="formWrapper">
+        <label for="sku" form="product_form">SKU:</label>
+        <input
+          type="text"
+          form="product_form"
+          formmethod=""
+          id="sku"
+          name="sku-input"
+        />
+        <small></small>
+      </div>
+      <div class="formWrapper">
+        <label for="name" form="product_form">Name:</label>
+        <input
+          type="text"
+          form="product_form"
+          formmethod=""
+          id="name"
+          name="name-input"
+        />
+        <small></small>
+      </div>
+
+      <div class="formWrapper">
+        <label for="price" form="product_form">Price($):</label>
+        <input
+          class="number"
+          type="number"
+          form="product_form"
+          formmethod=""
+          id="price"
+          name="price-input"
+          min="0.01"
+        />
+        <small></small>
+      </div>
+      <div class="formWrapper">
+        <label for="productType" form="product_form">Product Type:</label>
+        <select
+          name="product-list"
+          id="productType"
+          form="product_form"
+          onchange="addInputField(this.value)"
+        >
+          <option selected value="default">
+            --please select product type--
+          </option>
+          <option value="DVD">DVD</option>
+          <option value="Furniture">Furniture</option>
+          <option value="Book">Book</option>
+        </select>
+        <small></small>
+      </div>
+    </form>
+  </div>
+</main>
