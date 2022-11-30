@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\listView;
+namespace App\View\ListView;
 
 use App\Models\Template\Template;
 use Exception;
@@ -11,9 +11,8 @@ class ProductDisplay
     {
         //Render header
         try {
-            if (file_exists("src/View/templates/list/header_list.html")) {
-
-                include "src/View/templates/list/header_list.html";
+            if (file_exists(__DIR__ . "/../templates/list/header_list.html")) {
+                include __DIR__ . "/../templates/list/header_list.html";
             } else {
                 throw new Exception("header_list.html could not be found");
             }
@@ -24,8 +23,8 @@ class ProductDisplay
         //Render Main
         $template_body = new Template();
         try {
-            if (file_exists("src/View/templates/list/main_list.html")) {
-                $template_body->file = "src/View/templates/list/main_list.html";
+            if (file_exists(__DIR__ . "/../templates/list/main_list.html")) {
+                $template_body->file = __DIR__ . "/../templates/list/main_list.html";
             } else {
                 throw new Exception("main_list.html could not be found");
             }
@@ -40,8 +39,8 @@ class ProductDisplay
         //ob_start();
 
         try {
-            if (file_exists("src/View/templates/list/footer.html")) {
-                include "src/View/templates/list/footer.html";
+            if (file_exists(__DIR__ . "/../templates/list/footer.html")) {
+                include __DIR__ . "/../templates/list/footer.html";
             } else {
                 throw new Exception("footer.html could not be found");
             }

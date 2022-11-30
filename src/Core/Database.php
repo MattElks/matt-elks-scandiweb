@@ -53,6 +53,7 @@ class Database
         //$this->mysqli->close();
     }
 
+
     public function getProducts()
     {
         $useDB = "USE scandiweb_db";
