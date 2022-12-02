@@ -24,20 +24,19 @@ class MainController
         ProductAdd::renderAdd();
     }
 
-    /* public static function create()
+    public static function create()
     {
-        //because POST is a superGlobal, it is accessable anywhere
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            //create assoc array like this!!
             $productData = [];
             foreach ($_POST as $key => $value) {
-                // assoc array created from POST method
                 $productData[$key] = $value;
             }
             // is equal to a class > Book, DVD, Furniture. 
             // Uses namespace convention??
             $className = "app\\Models\\ProductTypes\\" . $_POST['type'];
             if (class_exists($className)) {
+                echo "it exists!";
                 //$cname refers to the exact class we want to instantiate
                 //this way we can create a new object without knowing what it is beforehand
 
@@ -59,5 +58,5 @@ class MainController
         }
 
         ProductAdd::renderAdd();
-    } */
+    }
 }

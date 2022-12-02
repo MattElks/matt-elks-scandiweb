@@ -22,14 +22,8 @@ class Router
 
     public function resolve()
     {
-
-        /*  echo "getRoutes: <br>";
-        echo var_dump($this->getRoutes) . "<br>"; */
-
         $url = $_SERVER['REQUEST_URI'] ?? '/';
 
-        /*  echo "url: <br>";
-        echo var_dump($url) . "<br>"; */
 
         if (strpos($url, '?')) {
 
@@ -38,14 +32,8 @@ class Router
 
         $method = strtolower($_SERVER['REQUEST_METHOD']);
 
-        /*  echo "method: <br>";
-        echo var_dump($method) . "<br>"; */
-
         if ($method === 'get') {
             $fn = $this->getRoutes[$url] ?? null;
-
-            /* echo "func: <br>";
-            echo var_dump($fn) . "<br>"; */
         } else {
             $fn = $this->postRoutes[$url] ?? null;
         }

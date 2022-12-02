@@ -62,4 +62,19 @@ class Database
         $statement = $this->mysqli->query("SELECT * FROM products");
         return $statement->fetch_assoc();
     }
+
+
+    public function createProduct($product)
+    {
+        $statement = $this->pdo->prepare("INSERT INTO products (sku, name, price, type, value)
+                VALUES (:sku, :name, :price, :type, :value)");
+
+        $statement->bindValue(':sku', $product->sku);
+        $statement->bindValue(':name', $product->name);
+        $statement->bindValue(':price', $product->price);
+        $statement->bindValue(':type', $product->type);
+        $statement->bindValue(':value', $product->value);
+
+        $statement->execute();
+    }
 }
