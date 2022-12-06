@@ -20,8 +20,8 @@ class ProductDisplay
             echo "Exception caught: " . $e->getMessage();
         }
 
-        //Render Main
-        $template_body = new Template();
+        //Render Main > I need to change this so that all items are displayed
+        /* $template_body = new Template();
         try {
             if (file_exists(__DIR__ . "/../templates/list/main_list.html")) {
                 $template_body->file = __DIR__ . "/../templates/list/main_list.html";
@@ -34,9 +34,19 @@ class ProductDisplay
         foreach ($params as $key => $value) {
             $template_body->set($key, $value);
         }
-        $template_body->display();
+        $template_body->display(); */
 
-        //ob_start();
+        //breakdown the assoc array
+        var_dump($params);
+        foreach ($params as $product) {
+            $template_body = new Template();
+            $template_body->file = __DIR__ . "/../templates/list/main_list.html";
+
+            foreach ($product as $key => $value) {
+                $template_body->set($key, $value);
+            }
+            $template_body->display();
+        }
 
         try {
             if (file_exists(__DIR__ . "/../templates/list/footer.html")) {

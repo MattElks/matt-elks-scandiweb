@@ -1,9 +1,10 @@
+/* 
 <IfModule mod_rewrite.c>
 Options +FollowSymLinks 
 RewriteEngine On 
 RewriteCond %{REQUEST_FILENAME} !-d 
 RewriteCond %{REQUEST_FILENAME} !-f 
-RewriteRule ^ index.php [L]
+RewriteRule ^$ /public [L]
 </IfModule>
 
 
@@ -12,5 +13,18 @@ Options +FollowSymLinks
 RewriteEngine On 
 RewriteCond %{REQUEST_FILENAME} !-d 
 RewriteCond %{REQUEST_FILENAME} !-f 
-RewriteRule ^ index.php [L]
+RewriteRule ^$ /public [L]
+</IfModule> */
+
+ 
+<IfModule mod_rewrite.so>
+  RewriteEngine On 
+  RewriteCond %{REQUEST_FILENAME} !-f 
+  RewriteRule ^ public/index.php [L]
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On 
+  RewriteCond %{REQUEST_FILENAME} !-f 
+  RewriteRule ^ public/index.php [L]
 </IfModule>

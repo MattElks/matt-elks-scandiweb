@@ -18,45 +18,30 @@ class MainController
         ]);
     }
 
-    public static function addProduct()
-    {
-
-        ProductAdd::renderAdd();
-    }
-
     public static function create()
     {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $productData = [];
+
+            $productInfo = [];
             foreach ($_POST as $key => $value) {
-                $productData[$key] = $value;
+                $productInfo[$key] = $value;
             }
+
             // is equal to a class > Book, DVD, Furniture. 
-            // Uses namespace convention??
-            $className = "app\\Models\\ProductTypes\\" . $_POST['type'];
+            $className = "App\\Models\\ProductTypes\\" . $_POST['type'];
             if (class_exists($className)) {
-                echo "it exists!";
-                //$cname refers to the exact class we want to instantiate
-                //this way we can create a new object without knowing what it is beforehand
-
-                //assoc array passed to new object
-                $product = new $className($productData);
+                $newProduct = new $className($productInfo);
             }
 
-            //$errors = $product->validateData();
-            //data in the product has been been validated.
-            // if (!$errors) {
+            $newProduct->validateProduct();
+
             $db = new Database();
-            //object passed to db
-            //create product takes info
-            $db->createProduct($product);
-            //returns you to home page
+            //create in db
+            $db->createProduct($newProduct);
             header('Location: /');
             exit;
-            //}
         }
-
         ProductAdd::renderAdd();
     }
 }

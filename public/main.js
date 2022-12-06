@@ -10,9 +10,8 @@ const dvdOption = `
   class="number"
   type="text"
   form="product_form"
-  formmethod=""
   id="size"
-  name="dvdInput"
+  name="size"
 />
 <small></small>
 <p>Please provide size in MB</p>
@@ -25,9 +24,8 @@ const furnitureOption = `
   class="number"
   type="number"
   form="product_form"
-  formmethod=""
   id="height"
-  name="heightInput"
+  name="height"
 />
 <small></small>
 </div>
@@ -38,9 +36,8 @@ const furnitureOption = `
   class="number"
   type="number"
   form="product_form"
-  formmethod=""
   id="width"
-  name="widthInput"
+  name="width"
 />
 <small></small>
 </div>
@@ -51,10 +48,8 @@ const furnitureOption = `
   class="number" 
   type="number"
   form="product_form"
-  formmethod=""
   id="length"
-  name="lengthInput"
-/>
+  name="length"
 <small></small>
 <p>Please provide dimensions in HxWxL format</p>
 </div>
@@ -67,9 +62,8 @@ const bookOption = `
   class="number"
   type="number"
   form="product_form"
-  formmethod=""
   id="weight"
-  name="weightInput"
+  name="weight"
 />
 <small></small>
 <p>Please provide weight in KG</p>`;
@@ -249,7 +243,6 @@ form.addEventListener("submit", (e) => {
 
   //submit to the server if the form is valid
   if (isFormValid) {
-    //add alert first to check
-    //form.submit() ???
+    form.submit();
   }
 });

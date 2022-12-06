@@ -13,10 +13,7 @@ $router = new Router();
 
 $router->get('/', [MainController::class, 'index']);
 
-//$router->get('/add-product', [MainController::class, 'create']);
-
-
-//$router->get('/add-product', [MainController::class, 'create']);
-//$router->post('/add-product', [MainController::class, 'create']);
+$router->get('/add-product', [MainController::class, 'create']);
+$router->post('/add-product', [MainController::class, 'create']);
 
 $router->resolve();

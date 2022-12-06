@@ -1,26 +1,15 @@
 <main class="form-container">
   <div class="form-wrap">
-    <form action="php/insert.php" method="post" id="product_form">
+    <!-- action="php/insert.php" -->
+    <form method="post" id="product_form">
       <div class="formWrapper">
         <label for="sku" form="product_form">SKU:</label>
-        <input
-          type="text"
-          form="product_form"
-          formmethod=""
-          id="sku"
-          name="sku-input"
-        />
+        <input type="text" form="product_form" id="sku" name="sku" />
         <small></small>
       </div>
       <div class="formWrapper">
         <label for="name" form="product_form">Name:</label>
-        <input
-          type="text"
-          form="product_form"
-          formmethod=""
-          id="name"
-          name="name-input"
-        />
+        <input type="text" form="product_form" id="name" name="name" />
         <small></small>
       </div>
 
@@ -30,17 +19,15 @@
           class="number"
           type="number"
           form="product_form"
-          formmethod=""
           id="price"
-          name="price-input"
-          min="0.01"
+          name="price"
         />
         <small></small>
       </div>
       <div class="formWrapper">
         <label for="productType" form="product_form">Product Type:</label>
         <select
-          name="product-list"
+          name="type"
           id="productType"
           form="product_form"
           onchange="addInputField(this.value)"
