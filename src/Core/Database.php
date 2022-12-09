@@ -58,9 +58,9 @@ class Database
     {
         $useDB = "USE scandiweb_db";
         $this->mysqli->query($useDB);
-        //Only retrieving one item
-        $statement = $this->mysqli->query("SELECT * FROM `products`");
-        return $statement->fetch_assoc();
+        $statement = $this->mysqli->query("SELECT * FROM `products`;");
+        $result = $statement->fetch_all(MYSQLI_ASSOC);
+        return $result;
     }
 
     public function getSku($sku)

@@ -31,8 +31,8 @@ class ProductAdd
         }
         //Render Footer
         try {
-            if (file_exists(__DIR__ . "/../templates/add/footer.html")) {
-                include __DIR__ . "/../templates/add/footer.html";
+            if (file_exists(__DIR__ . "/../templates/add/footer_add.html")) {
+                include __DIR__ . "/../templates/add/footer_add.html";
             } else {
                 throw new Exception("footer.html could not be found");
             }

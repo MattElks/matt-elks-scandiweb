@@ -62,6 +62,22 @@ header button a:visited {
   color: inherit;
 }
 
+/*LIST-PRODUCT MAIN*/
+
+.main {
+  display: flex;
+  justify-content: space-around;
+}
+
+.single-product {
+  display: flex;
+  margin: 20px 0px;
+  border: solid 3px;
+  padding: 5px 0px;
+  flex-flow: column wrap;
+  width: 19%;
+}
+
 /*ADD-PRODUCT MAIN*/
 
 .form-container {
