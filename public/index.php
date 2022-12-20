@@ -1,6 +1,5 @@
 <?php
 
-//remember to change filepath
 include_once __DIR__ . '/../config/config.php';
 include_once __DIR__ . '/../Vendor/autoload.php';
 
@@ -15,5 +14,9 @@ $router->get('/', [MainController::class, 'index']);
 
 $router->get('/add-product', [MainController::class, 'create']);
 $router->post('/add-product', [MainController::class, 'create']);
+
+$router->get('/api/read-product', [MainController::class, 'read']);
+
+$router->post('/delete-product', [MainController::class, 'delete']);
 
 $router->resolve();

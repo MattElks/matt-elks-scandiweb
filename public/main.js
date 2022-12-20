@@ -7,13 +7,14 @@ const dvdOption = `
 <div class="formWrapper">
 <label for="size" form="product_form">Size(MB):</label>
 <input
+required
   class="number"
-  type="text"
+  type="number"
   form="product_form"
   id="size"
   name="size"
 />
-<small></small>
+
 <p>Please provide size in MB</p>
 </div>`;
 
@@ -21,36 +22,39 @@ const furnitureOption = `
 <div class="formWrapper">
 <label for="height" form="product_form">Height(CM):</label>
 <input
+required
   class="number"
   type="number"
   form="product_form"
   id="height"
   name="height"
 />
-<small></small>
+
 </div>
 
 <div class="formWrapper">
 <label for="width" form="product_form">Width(CM):</label>
 <input
+required
   class="number"
   type="number"
   form="product_form"
   id="width"
   name="width"
 />
-<small></small>
+
 </div>
 
 <div class="formWrapper">
 <label for="length" form="product_form">Length(CM):</label>
 <input
+required
   class="number" 
   type="number"
   form="product_form"
   id="length"
   name="length"
-<small></small>
+
 <p>Please provide dimensions in HxWxL format</p>
 </div>
 `;
@@ -59,13 +63,14 @@ const bookOption = `
 <div class="formWrapper">
 <label for="weight" form="product_form">Weight(KG):</label>
 <input
+required
   class="number"
   type="number"
   form="product_form"
   id="weight"
   name="weight"
 />
-<small></small>
+
 <p>Please provide weight in KG</p>`;
 
 const addInputField = (value) => {
@@ -92,7 +97,6 @@ const addInputField = (value) => {
 };
 
 //Form validation
-
 const skuInput = document.querySelector("#sku");
 const nameInput = document.querySelector("#name");
 const priceInput = document.querySelector("#price");
@@ -100,18 +104,11 @@ const priceInput = document.querySelector("#price");
 const optionInput = document.querySelector("#productType");
 
 //checks if input is empty
-const isRequired = (value) =>
-  value === "" || value === "default" ? false : true;
-
-//checks if sku is A-Z0-9 with length of 6
-const isSkuValid = (sku) => {
-  const re = /^[a-zA-Z0-9]*$/;
-  return re.test(sku) && sku.length === 6;
-};
+const isRequired = (value) => (value === "" ? false : true);
 
 //checks if name is A-Z only
 const isNameValid = (name) => {
-  const re = /^[a-zA-Z\s]*$/;
+  const re = /^[a-zA-Z]+( [a-zA-Z]+)*$/; //
   return re.test(name);
 };
 
@@ -120,99 +117,115 @@ const isMinAmount = (number) => (number < 0.01 ? false : true);
 
 //checks if option has been selected
 const isOptionSelected = (option) =>
-  option.value === "default" ? false : true;
+  option == "DVD" || "Book" || "Furniture" ? true : false;
 
 //Shows error
-const showError = (input, message) => {
+const showError = (input) => {
   input.classList.remove("success");
   input.classList.add("error");
-  const error = input.parentElement.querySelector("small");
-  error.innerHTML = message;
 };
 
 //Shows success
 const showSuccess = (input) => {
   input.classList.remove("error");
   input.classList.add("success");
-  const error = input.parentElement.querySelector("small");
-  error.innerHTML = "";
 };
 
-//validates sku
+//validates sku input
 const checkSku = (sku) => {
-  let valid = false;
-  if (!isRequired(sku.value)) {
-    showError(sku, "Please, submit required data");
-  } else if (!isSkuValid(sku.value)) {
-    showError(sku, "SKU must have a length of 6 characters");
-  } else {
+  const re = /^[a-zA-Z0-9]+$/;
+  if (re.test(sku.value)) {
     showSuccess(sku);
-    valid = true;
+    sku.setCustomValidity("");
+  } else {
+    showError(sku);
+    sku.setCustomValidity("Please, submit required data");
   }
-  return valid;
+};
+
+//checks for unique sku need instant validation
+const validateSku = (sku) => {
+  fetch("/api/read-product")
+    .then((response) => response.json())
+    .then((data) => {
+      let skuArr = data.map((e) => e.sku);
+      if (skuArr.includes(sku.value)) {
+        const message = sku.parentElement.querySelector("small");
+        message.innerHTML = "SKU already exists";
+        sku.setCustomValidity("SKU already exists");
+        showError(sku);
+      } else {
+        const message = sku.parentElement.querySelector("small");
+        message.innerHTML = "";
+        sku.setCustomValidity("");
+        showSuccess(sku);
+      }
+    });
 };
 
 //validates name
 const checkName = (name) => {
-  let valid = false;
   if (!isRequired(name.value)) {
-    showError(name, "Please, submit required data");
+    name.setCustomValidity("Please, submit required data");
+    showError(name);
   } else if (!isNameValid(name.value)) {
-    showError(name, "Name must consist of characters A-Z");
+    name.setCustomValidity("Name must consist of characters A-Z only");
+    showError(name);
   } else {
+    name.setCustomValidity("");
     showSuccess(name);
-    valid = true;
   }
-  return valid;
 };
 
 //validates price, size, weight, height, length, width
 let numberInput = document.getElementsByClassName("number");
 const checkDigits = (arr) => {
-  let valid = false;
   for (item of arr) {
     if (!isRequired(item.value)) {
-      showError(item, "Please, submit required data");
+      item.setCustomValidity("Please, submit required data");
+      showError(item);
     } else if (!isMinAmount(item.value)) {
-      showError(item, `${item.id} must be at least 0.01`);
+      item.setCustomValidity(`${item.id} must be at least 0.01`);
+      showError(item);
     } else {
+      item.setCustomValidity("");
       showSuccess(item);
     }
   }
-  valid = true;
-  return valid;
 };
 
 //validates selected option
 const checkOption = (option) => {
-  let valid = false;
-  if (!isRequired(option.value)) {
-    showError(option, "Please, submit required data");
+  let selectedOption = option.options[option.selectedIndex].value;
+  if (selectedOption === "") {
+    showError(option);
   } else {
     showSuccess(option);
-    valid = true;
   }
-  return valid;
 };
 
-//validates number input for instant validation
+//validates number
 const checkNumber = (id) => {
-  //get element from id
   const number = document.querySelector(`#${id}`);
   if (!isRequired(number.value)) {
-    showError(number, "Please, submit required data");
+    number.setCustomValidity("Please, submit required data");
+    showError(number);
   } else if (!isMinAmount(number.value)) {
-    showError(number, `${id} must be at least 0.01`);
+    number.setCustomValidity(`${id} must be at least 0.01`);
+    showError(number);
   } else {
+    number.setCustomValidity("");
     showSuccess(number);
   }
 };
 
 //instant input validation
 form.addEventListener("input", (e) => {
+  e.preventDefault();
   switch (e.target.id) {
     case "sku":
       checkSku(skuInput);
+      validateSku(skuInput);
       break;
     case "name":
       checkName(nameInput);
@@ -232,17 +245,8 @@ form.addEventListener("input", (e) => {
 
 //validates form
 form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  //validate form
-  let isSkuValid = checkSku(skuInput),
-    isNameValid = checkName(nameInput),
-    isMinAmount = checkDigits(numberInput),
-    isOptionValid = checkOption(optionInput);
-
-  let isFormValid = isSkuValid && isNameValid && isMinAmount && isOptionValid;
-
-  //submit to the server if the form is valid
-  if (isFormValid) {
-    form.submit();
+  if (!form.checkValidity()) {
+    e.preventDefault();
+    e.stopPropagation();
   }
 });

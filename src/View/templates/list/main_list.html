@@ -1,7 +1,13 @@
 <div class="single-product">
-  <div class="checkbox">
-    <label class="form-check-label">
-      <input form="delete-product" type="checkbox" name="{sku}" />
+  <div class="delete-checkbox">
+    <label form="delete-product" for="checkbox" class="form-check-label">
+      <input
+        form="delete-product"
+        id="checkbox"
+        type="checkbox"
+        name="{sku}"
+        value="{sku}"
+      />
     </label>
   </div>
   <p>{sku}</p>

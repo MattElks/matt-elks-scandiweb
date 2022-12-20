@@ -1,45 +1,41 @@
 <main class="form-container">
   <div class="form-wrap">
-    <!-- action="php/insert.php" -->
     <form method="post" id="product_form">
       <div class="formWrapper">
         <label for="sku" form="product_form">SKU:</label>
-        <input type="text" form="product_form" id="sku" name="sku" />
+        <input required type="text" form="product_form" id="sku" name="sku" />
         <small></small>
       </div>
       <div class="formWrapper">
         <label for="name" form="product_form">Name:</label>
-        <input type="text" form="product_form" id="name" name="name" />
-        <small></small>
+        <input required type="text" form="product_form" id="name" name="name" />
       </div>
 
       <div class="formWrapper">
         <label for="price" form="product_form">Price($):</label>
         <input
+          required
           class="number"
           type="number"
           form="product_form"
           id="price"
           name="price"
         />
-        <small></small>
       </div>
       <div class="formWrapper">
         <label for="productType" form="product_form">Product Type:</label>
         <select
+          required
           name="type"
           id="productType"
           form="product_form"
           onchange="addInputField(this.value)"
         >
-          <option selected value="default">
-            --please select product type--
-          </option>
+          <option selected value="">--please select product type--</option>
           <option value="DVD">DVD</option>
           <option value="Furniture">Furniture</option>
           <option value="Book">Book</option>
         </select>
-        <small></small>
       </div>
     </form>
   </div>

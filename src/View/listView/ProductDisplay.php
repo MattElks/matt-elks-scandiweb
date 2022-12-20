@@ -9,7 +9,7 @@ class ProductDisplay
 {
     public static function renderProducts($params)
     {
-        //Render header
+
         try {
             if (file_exists(__DIR__ . "/../templates/list/header_list.html")) {
                 include __DIR__ . "/../templates/list/header_list.html";

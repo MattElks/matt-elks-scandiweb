@@ -2,9 +2,6 @@
 
 namespace  App\Core;
 
-use Exception;
-use mysqli;
-
 class Database
 {
     private $mysqli;
@@ -20,8 +17,6 @@ class Database
         $dbName = "scandiweb_db";
         $query = $this->mysqli->query("SELECT COUNT(*) FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'scandiweb_db';");
         $row = $query->fetch_row();
-        // $row[0] === "1" bc the db is there. The above should check that
-        // it should = 0 if the db is not there
         if ($row[0] === "0") {
 
             //Create db
@@ -49,8 +44,20 @@ class Database
                 ('GHI789', 'Deck Chair', 23, 'Furniture', 'Dimensions: 20x20x20 CM');";
             $this->mysqli->query($sqlProducts);
         }
-
-        //$this->mysqli->close();
+        //if table exists and has no rows insert products
+        $useDB = "USE scandiweb_db";
+        $this->mysqli->query($useDB);
+        $statement = $this->mysqli->query("SELECT COUNT(*) FROM `products`");
+        $row = $statement->fetch_row();
+        if ($row[0] === "0") {
+            //Insert info
+            $sqlProducts = "INSERT INTO `products` (sku, name, price, type, value) 
+            VALUES
+                ('ABC123', 'Pachinko', 10, 'Book', 'Weight: 1 KG'),
+                ('DEF456', 'Fast and Furious', 1, 'DVD', 'Size: 500 MB'),
+                ('GHI789', 'Deck Chair', 23, 'Furniture', 'Dimensions: 20x20x20 CM');";
+            $this->mysqli->query($sqlProducts);
+        }
     }
 
 
@@ -58,7 +65,7 @@ class Database
     {
         $useDB = "USE scandiweb_db";
         $this->mysqli->query($useDB);
-        $statement = $this->mysqli->query("SELECT * FROM `products`;");
+        $statement = $this->mysqli->query("SELECT * FROM `products`");
         $result = $statement->fetch_all(MYSQLI_ASSOC);
         return $result;
     }
@@ -67,10 +74,11 @@ class Database
     {
         $useDB = "USE scandiweb_db";
         $this->mysqli->query($useDB);
-        $statement = $this->mysqli->query('SELECT * FROM products WHERE sku =' . $sku . "'");
-        return $statement->fetch_assoc();
-    }
+        $statement = $this->mysqli->query("SELECT * FROM `products` WHERE sku = '$sku' ");
+        $result = $statement->fetch_assoc();
 
+        return $result["sku"];
+    }
 
     public function createProduct($product)
     {
@@ -80,5 +88,13 @@ class Database
         $statement = "INSERT INTO `products` (sku, name, price, type, value)
             VALUES ('$product->sku', '$product->name', '$product->price', '$product->type', '$product->value')";
         $this->mysqli->query($statement);
+    }
+
+    public function deleteProduct($sku)
+    {
+        $useDB = "USE scandiweb_db";
+        $this->mysqli->query($useDB);
+        $statement = ("DELETE FROM `products` WHERE sku = '$sku'");
+        return $this->mysqli->query($statement);
     }
 }

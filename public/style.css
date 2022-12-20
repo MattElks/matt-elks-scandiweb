@@ -18,7 +18,9 @@ body {
   position: relative;
 }
 .content-wrap {
-  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
 /* HEADER */
@@ -40,6 +42,17 @@ header button {
   color: #da2f73;
   padding: 5px 8px;
   border-width: 3px;
+}
+
+.list-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 260px;
+  align-items: center;
+}
+
+form#delete-product {
+  margin: 0;
 }
 
 header button:hover {
@@ -66,16 +79,26 @@ header button a:visited {
 
 .main {
   display: flex;
-  justify-content: space-around;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding-top: 30px;
+  flex: 1;
+  margin-bottom: 15px;
 }
 
 .single-product {
   display: flex;
-  margin: 20px 0px;
+  margin: 15px 15px;
   border: solid 3px;
   padding: 5px 0px;
   flex-flow: column wrap;
   width: 19%;
+  text-align: center;
+  height: 180px;
+}
+
+.single-product p {
+  margin: 6px 0;
 }
 
 /*ADD-PRODUCT MAIN*/
@@ -83,6 +106,7 @@ header button a:visited {
 .form-container {
   display: flex;
   justify-content: center;
+  flex: 1;
 }
 .form-wrap {
   width: 200px;
@@ -134,11 +158,13 @@ footer {
   justify-content: center;
   align-items: center;
   width: 1140px;
-  position: absolute;
-  bottom: 0;
-  height: 2rem;
   border-top: 3px solid #da2f73;
 }
+
+footer div {
+  padding: 5px 0px;
+}
+
 footer p {
   margin: 0;
 }

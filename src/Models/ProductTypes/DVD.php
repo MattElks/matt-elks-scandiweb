@@ -4,11 +4,11 @@ namespace App\Models\ProductTypes;
 
 use App\Models\ProductTypes\Product;
 
-class Book extends Product
+class DVD extends Product
 {
     protected function validateValue()
     {
-        $this->value = 'Weight: ' . $this->productInfo['weight'] . ' KG';
+        $this->value = 'Size: ' . $this->productInfo['size'] . ' MB';
         return true;
     }
-};
+}

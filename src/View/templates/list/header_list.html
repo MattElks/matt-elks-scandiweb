@@ -5,15 +5,15 @@
     <!--<meta http-equiv="X-UA-Compatible" content="ie=edge" /> -->
     <title>Matt Elks Test Project</title>
     <!-- links -->
+    <link rel="stylesheet" type="text/css" href="/public/style.css"/>
+      <!-- <script src="/public/main.js" defer></script> -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap"
       rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/public/main.css" />
-    <!-- <script src="/public/main.js" defer></script> -->
-    <!-- -->
+    /> 
+  
   </head>
 
   <body>
@@ -23,9 +23,11 @@
           <div>
             <h1>Product List</h1>
           </div>
-          <div>
+          <div class="list-nav">
             <button><a href="/add-product">ADD</a></button>
-            <button id="delete-product-btn">MASS DELETE</button>
+            <form action="/delete-product" method="post" id="delete-product">
+              <button for="delete-product" id="delete-product-btn" name="submit" type="submit">MASS DELETE</button>
+            </form>
           </div>
         </header>
    <main class="main"> 

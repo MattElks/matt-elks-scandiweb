@@ -1,4 +1,4 @@
-/* 
+/*
 <IfModule mod_rewrite.c>
 Options +FollowSymLinks 
 RewriteEngine On 
@@ -27,4 +27,4 @@ RewriteRule ^$ /public [L]
   RewriteEngine On 
   RewriteCond %{REQUEST_FILENAME} !-f 
   RewriteRule ^ public/index.php [L]
-</IfModule>
+</IfModule> 
